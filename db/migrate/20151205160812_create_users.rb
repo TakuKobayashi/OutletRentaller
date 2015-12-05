@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :token, null: false
       t.integer :rental_register_id
+      t.string :language, null: false
       t.timestamps null: false
     end
     add_index :users, :token, unique: true

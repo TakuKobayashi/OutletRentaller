@@ -6,6 +6,7 @@
 #  name               :string(255)
 #  token              :string(255)      not null
 #  rental_register_id :integer
+#  language           :string(255)      not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
