@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'gon'
+
 #管理ツール作成-> active_admin用
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
