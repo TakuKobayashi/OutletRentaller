@@ -1,7 +1,10 @@
 <table>
   <%= form_for(@rental_resister, url: regist_rental_url) do |f| %>
-    <tr><td><%= f.label :phone_number %></td><td><%= f.text_field :phone_number %></td></tr>
-    <tr><td><%= f.label :rental_finish_at %></td><td><%= f.datetime_select :rental_finish_at %></td></tr>
-    <tr><td><%= f.submit %></td></tr>
+    <tr><td><%= f.label :phone_number %></td><td><%= f.text_field :phone_number, value: @phone_number %></td></tr>
+    <tr><td><%= f.label :rental_finish_at %></td><td><%= f.datetime_select :rental_finish_at, default: Time.current %></td></tr>
+    <%= f.hidden_field :token %>
+    <%= f.hidden_field :user_agent %>
+    <%= hidden_field_tag :language, @language %>
+    <tr><td><%= f.submit "登録する" %></td></tr>
   <% end %>
 </table>
