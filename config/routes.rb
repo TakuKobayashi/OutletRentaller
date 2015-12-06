@@ -19,6 +19,13 @@ Rails.application.routes.draw do
     post :request_xml
   end
 
+  resource :rental, controller: :rental, only: {} do
+    get :reserve
+    get :new
+    post :regist
+    get :regist_comlete
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do

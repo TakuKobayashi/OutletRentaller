@@ -17,4 +17,5 @@
 #
 
 class User < ActiveRecord::Base
+  default_value_for(:token){ SecureRandom.hex }
 end

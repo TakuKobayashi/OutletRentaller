@@ -21,4 +21,12 @@
 
 class RentalRegister < ActiveRecord::Base
   include TwilioAction
+
+  enum state: {
+    scaned: 0,
+    rentaling: 1,
+    finished: 2,
+  }
+
+  default_value_for(:token){ SecureRandom.hex }
 end

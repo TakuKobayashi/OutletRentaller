@@ -1,0 +1,7 @@
+<table>
+  <%= form_for(@rental_resister, url: regist_rental_url) do |f| %>
+    <tr><td><%= f.label :phone_number %></td><td><%= f.text_field :phone_number %></td></tr>
+    <tr><td><%= f.label :rental_finish_at %></td><td><%= f.datetime_select :rental_finish_at %></td></tr>
+    <tr><td><%= f.submit %></td></tr>
+  <% end %>
+</table>
