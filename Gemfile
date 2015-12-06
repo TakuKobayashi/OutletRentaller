@@ -49,6 +49,9 @@ gem 'kaminari'
 gem 'activerecord-import'
 gem 'execjs'
 
+gem "twilio-ruby"
+gem "gyoku"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
