@@ -19,10 +19,14 @@ class RentalController < BaseController
     end
     update_params = params[:rental_register]
     update_params.delete(:token)
-    rental_resister = RentalRegister.find_or_initialize_by(token: token)
-    rental_resister.update!(update_params)
-    user = User.find_or_initialize_by(rental_register_id: rental_resister.id)
-    user.update!(language: params[:language])
+    user = nil
+    RentalRegister.transaction do
+      rental_resister = RentalRegister.find_or_initialize_by(token: token)
+      rental_resister.update!(update_params)
+      rental_resister.rentaling!
+      user = User.find_or_initialize_by(rental_register_id: rental_resister.id)
+      user.update!(language: params[:language])
+    end
 
     redirect_to regist_comlete_rental_url(token: user.token)
   end
