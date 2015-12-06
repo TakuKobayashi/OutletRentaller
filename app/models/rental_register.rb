@@ -20,4 +20,5 @@
 #
 
 class RentalRegister < ActiveRecord::Base
+  include TwilioAction
 end

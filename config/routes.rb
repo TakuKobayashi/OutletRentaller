@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resource :twilio, controller: :twilio,only: {} do
-    get :request_xml
+    post :request_xml
   end
 
   # Example resource route with options:
