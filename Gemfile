@@ -58,9 +58,20 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :test do
+  gem 'spork'
+  gem 'guard-spork'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
