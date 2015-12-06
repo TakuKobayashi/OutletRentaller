@@ -22,6 +22,8 @@
 class RentalRegister < ActiveRecord::Base
   include TwilioAction
 
+  has_one :user
+
   enum state: {
     scaned: 0,
     rentaling: 1,
@@ -29,4 +31,10 @@ class RentalRegister < ActiveRecord::Base
   }
 
   default_value_for(:token){ SecureRandom.hex }
+
+  def self.call_phone
+    RentalRegister.rentaling.where("rental_finish_at < ?", Time.current).find_each do |rr|
+      rr.call_phone
+    end
+  end
 end

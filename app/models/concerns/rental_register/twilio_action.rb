@@ -12,8 +12,7 @@ class RentalRegister < ActiveRecord::Base
       client = Twilio::REST::Client.new(twilio_config['account_sid'], twilio_config['auth_token'])
       client.account.calls.create(
         from: '+815031774914',
-        to:   '+818055146460',
-        #to:  phone_number.to_s,
+        to:  phone_number.to_s,
         url: 'http://taptappun.cloudapp.net/twilio/request_xml',
         #url: Rails.application.routes.url_helpers.request_xml_twilio_url, #再生される音声の内容が書かれたxmlのURL
         method: 'POST'
