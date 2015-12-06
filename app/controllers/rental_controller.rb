@@ -6,13 +6,21 @@ class RentalController < BaseController
 
   def new
     @rental_resister = RentalRegister.find_or_initialize_by(token: session[:token], user_agent: request.env["HTTP_USER_AGENT"])
+    @rental_resister.token = SecureRandom.hex if @rental_resister.token.blank?
     @language = params[:language] || "ja"
     @phone_number = params[:phone_number]
   end
 
   def regist
-    rental_resister = RentalRegister.find_or_initialize_by(token: session[:token])
-    rental_resister.update!(params[:rental_register])
+    if session[:token].blank?
+      token = params[:rental_register][:token]
+    else
+      token = session[:token]
+    end
+    update_params = params[:rental_register]
+    update_params.delete(:token)
+    rental_resister = RentalRegister.find_or_initialize_by(token: token)
+    rental_resister.update!(update_params)
     user = User.find_or_initialize_by(rental_register_id: rental_resister.id)
     user.update!(language: params[:language])
 
