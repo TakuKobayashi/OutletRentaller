@@ -23,6 +23,10 @@ class RentalController < BaseController
     RentalRegister.transaction do
       rental_resister = RentalRegister.find_or_initialize_by(token: token)
       rental_resister.update!(update_params)
+      if rental_resister.phone_number[0] == "0"
+        rental_resister.phone_number = "+81" + rental_resister.phone_number[1..rental_resister.phone_number.length]
+        rental_resister.save!
+      end
       rental_resister.rentaling!
       user = User.find_or_initialize_by(rental_register_id: rental_resister.id)
       user.update!(language: params[:language])

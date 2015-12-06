@@ -5,7 +5,7 @@ class TwilioController < BaseController
     render xml: Gyoku.xml({
       Response: {
         Say:{
-          content!: "お貸ししております。電源タップの返却時間を過ぎておりますが、ご返却いただいておりません。ご返却をお願いします。", 
+          content!: "電源タップの返却時間を過ぎております。ご返却をお願いします。", 
           "@language" => "ja-jp"
           }
        }
